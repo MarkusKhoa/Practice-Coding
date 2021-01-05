@@ -1,22 +1,12 @@
-#Implement by two-pointer methods
-n, k = map(int, input.split())
-arr = list(map(int, input.split()))
+N, M = map(int, input().split())
+i = j = 0
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+while i < N and j < M:
+    if a[i] <= b[j]:
+        i += 1
+        j += 1
+    else:
+        j += 1
 
-def find_segment(arr, n, k):
-    f = [0]*100001
-    L = count = 0
-    R = -1
-    while R < n-1:
-        R += 1
-        if f[arr[R]] == 0:
-            count += 1
-        f[arr[R]] += 1
-        while count == k:
-            f[arr[L]] -= 1
-            if f[arr[L]] == 0:
-                print(L+1, R+1)
-                return
-            L += 1
-        print(-1, -1)
-
-find_segment(arr, n, k)
+print(N-i)
